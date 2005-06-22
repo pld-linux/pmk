@@ -1,10 +1,9 @@
 # TODO
-# - better summary?
 # - mandir should be passed in build not install (pmk bug?)
-Summary:	The meaning of PMK is "Pre Make Kit".
+Summary:	Pre Make Kit
 Name:		pmk
 Version:	0.9.3
-Release:	0.1
+Release:	0.2
 Epoch:		0
 License:	BSD
 Group:		Development/Building
@@ -14,9 +13,9 @@ URL:		http://pmk.sourceforge.net/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-The meaning of PMK is "Pre Make Kit". It started as an alternative to
-GNU Autoconf for POSIX platforms. Now, it's also an alternative to GNU
-Libtool and pkg-config.
+The pmk project tries to provide an alternative to GNU autoconf, GNU
+libtool and pkg-config. It also provides a basic BSD install like tool
+and a source scanner to help building of pmkfiles.
 
 Goals:
 - Make it easy to use for both users and developers.
@@ -31,20 +30,26 @@ Goals:
 %setup -q
 
 %build
-PREFIX=%{_prefix} \
 SYSCONFDIR=%{_sysconfdir} \
 DATADIR=%{_datadir} \
 CC="%{__cc}" \
 CFLAGS="%{rpmcflags}" \
-sh pmkcfg.sh
+sh pmkcfg.sh -p %{_prefix}
 %{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
+install -d $RPM_BUILD_ROOT%{_sysconfdir}/%{name}
 %{__make} install \
 	MANDIR=%{_mandir} \
 	DESTDIR=$RPM_BUILD_ROOT
+
+> $RPM_BUILD_ROOT%{_sysconfdir}/%{name}/%{name}.conf
+
+%post
+# due HW specific vars, need to do it on target host
+%{_bindir}/pmksetup -u PREFIX=%{_prefix} > /dev/null
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -52,6 +57,10 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS BONUS README BUGS STATUS CREDITS TODO Changelog INSTALL LICENSE
+%doc doc/ samples/
+%dir %{_sysconfdir}/%{name}
+%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/%{name}/*
+
 %attr(755,root,root) %{_bindir}/pmk
 %attr(755,root,root) %{_bindir}/pmkinstall
 %attr(755,root,root) %{_bindir}/pmkpc
