@@ -58,6 +58,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/pmkscan
 %attr(755,root,root) %{_bindir}/pmksetup
 %{_mandir}/man[158]/*
+%dir %{_datadir}/pmk
 %{_datadir}/pmk/pmkcfgtool.dat
 %{_datadir}/pmk/pmkcomp.dat
 %{_datadir}/pmk/pmkcpu.dat
