@@ -1,6 +1,7 @@
 # TODO
 # - mandir should be passed in build not install (pmk bug?)
 Summary:	Pre Make Kit
+Summary(pl):	Pre Make Kit - zestaw narzêdzi u¿ywanych przed make
 Name:		pmk
 Version:	0.9.3
 Release:	0.2
@@ -26,6 +27,20 @@ Goals:
   (three clauses BSD).
 - Limit the changes in sources for a transition from autoconf.
 
+%description -l pl
+Projekt pmk próbuje dostarczyæ alternatywê dla GNU autoconfa, GNU
+libtoola i pkg-configa. Dostarcza tak¿e podstawowe narzêdzie podobne
+do BSD install i skaner kodu ¼ród³owego pomagaj±cy przy tworzeniu
+pmkfile'i.
+
+Cele:
+- ³atwe u¿ywanie zarówno dla u¿ytkowników, jak i programistów
+- uczynienie etapu configure tak bezpiecznym, jak to mo¿liwe
+- utrzymanie jak najmniejszej liczby zale¿no¶ci (w³a¶ciwie tylko libc)
+- dostarczenie pakietu na wolnej i u¿ywalnej licencji dla ka¿dego
+  (3-klauzulowej BSD)
+- ograniczenie zmian w ¼ród³ach przy przechodzeniu z autoconfa
+
 %prep
 %setup -q
 
@@ -47,12 +62,12 @@ install -d $RPM_BUILD_ROOT%{_sysconfdir}/%{name}
 
 > $RPM_BUILD_ROOT%{_sysconfdir}/%{name}/%{name}.conf
 
+%clean
+rm -rf $RPM_BUILD_ROOT
+
 %post
 # due HW specific vars, need to do it on target host
 %{_bindir}/pmksetup -u PREFIX=%{_prefix} > /dev/null
-
-%clean
-rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
