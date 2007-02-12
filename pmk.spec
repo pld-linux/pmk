@@ -1,7 +1,7 @@
 # TODO
 # - mandir should be passed in build not install (pmk bug?)
 Summary:	Pre Make Kit
-Summary(pl):	Pre Make Kit - zestaw narzÍdzi uøywanych przed make
+Summary(pl.UTF-8):   Pre Make Kit - zestaw narzƒôdzi u≈ºywanych przed make
 Name:		pmk
 Version:	0.9.3
 Release:	0.2
@@ -27,19 +27,19 @@ Goals:
   (three clauses BSD).
 - Limit the changes in sources for a transition from autoconf.
 
-%description -l pl
-Projekt pmk prÛbuje dostarczyÊ alternatywÍ dla GNU autoconfa, GNU
-libtoola i pkg-configa. Dostarcza takøe podstawowe narzÍdzie podobne
-do BSD install i skaner kodu ºrÛd≥owego pomagaj±cy przy tworzeniu
+%description -l pl.UTF-8
+Projekt pmk pr√≥buje dostarczyƒá alternatywƒô dla GNU autoconfa, GNU
+libtoola i pkg-configa. Dostarcza tak≈ºe podstawowe narzƒôdzie podobne
+do BSD install i skaner kodu ≈∫r√≥d≈Çowego pomagajƒÖcy przy tworzeniu
 pmkfile'i.
 
 Cele:
-- ≥atwe uøywanie zarÛwno dla uøytkownikÛw, jak i programistÛw
-- uczynienie etapu configure tak bezpiecznym, jak to moøliwe
-- utrzymanie jak najmniejszej liczby zaleøno∂ci (w≥a∂ciwie tylko libc)
-- dostarczenie pakietu na wolnej i uøywalnej licencji dla kaødego
+- ≈Çatwe u≈ºywanie zar√≥wno dla u≈ºytkownik√≥w, jak i programist√≥w
+- uczynienie etapu configure tak bezpiecznym, jak to mo≈ºliwe
+- utrzymanie jak najmniejszej liczby zale≈ºno≈õci (w≈Ça≈õciwie tylko libc)
+- dostarczenie pakietu na wolnej i u≈ºywalnej licencji dla ka≈ºdego
   (3-klauzulowej BSD)
-- ograniczenie zmian w ºrÛd≥ach przy przechodzeniu z autoconfa
+- ograniczenie zmian w ≈∫r√≥d≈Çach przy przechodzeniu z autoconfa
 
 %prep
 %setup -q
