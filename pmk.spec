@@ -1,7 +1,7 @@
 # TODO
 # - mandir should be passed in build not install (pmk bug?)
 Summary:	Pre Make Kit
-Summary(pl.UTF-8):   Pre Make Kit - zestaw narzędzi używanych przed make
+Summary(pl.UTF-8):	Pre Make Kit - zestaw narzędzi używanych przed make
 Name:		pmk
 Version:	0.9.3
 Release:	0.2
